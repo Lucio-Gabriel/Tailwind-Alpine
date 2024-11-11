@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="//unpkg.com/alpinejs" defer></script>
+     <link rel="stylesheet" href="/styles/output.css">
+    <title>Aula2</title>
+</head>
+<body>
+    
+    <div x-data="{ open: false }">
+        <button type="button" x-on:click="open=!open"> Abre/Fecha </button>
+        <h1>Clique no btn acima e veja o conteudo</h1>
+        <p x-show="open">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laborum inventore magnam exercitationem, maiores minima consectetur 
+            numquam dolor culpa fugit repellat, sint non amet molestias architecto repudiandae ex tempora quidem consequatur qui mollitia? Doloribus,
+             minus? Cumque perspiciatis sint nesciunt quasi explicabo omnis praesentium magni necessitatibus non, aliquid officia quae. Architecto?  
+        </p>
+        <p x-show="open">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laborum inventore magnam exercitationem, maiores minima consectetur 
+            numquam dolor culpa fugit repellat, sint non amet molestias architecto repudiandae ex tempora quidem consequatur qui mollitia? Doloribus,
+             minus? Cumque perspiciatis sint nesciunt quasi explicabo omnis praesentium magni necessitatibus non, aliquid officia quae. Architecto?  
+        </p>
+    </div>
+
+    <div x-data="{ open: false }">
+        <h1 >Clique no botao abaixo e veja meu linkedln</h1>
+        <button type="button" x-on:click="open=!open">Abrir a imagem</button>
+
+        <img x-show="open" src="linkdln.PNG" alt="">
+    </div>
+
+</body>
+</html>

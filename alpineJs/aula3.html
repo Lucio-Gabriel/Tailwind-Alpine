@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="//unpkg.com/alpinejs" defer></script>
+     
+    <title>Aula3</title>
+</head>
+<body>
+    
+    <div x-data="{
+        name:'Lucio',
+        toSlug(){
+            this.name=this.name.toLowerCase()
+        },
+        secondSlug(){
+            this.name=this.name.toUpperCase()
+        }
+    }">
+
+        <input type="text" x-model="name">
+        <span x-text="name"></span>
+        <button type="button" x-on:click="toSlug">Deixa minusculo</button>
+        <button type="button" x-on:click="secondSlug">Deixar maisculo</button>
+    </div>
+
+</body>
+</html>
