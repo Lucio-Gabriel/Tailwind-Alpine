@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/output.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <title>Aula-4-API</title>
+</head>
+<body>
+    
+    <section x-data="{
+        search:'',
+        result:{},
+        doSearch(){
+            fetch('https://dummyjson.com/products/search?q='+this.search)
+            .then(res => res.json())
+            .then(json=>this.result=json);
+        }
+    }"
+    >
+        <input  type="search" x-model="search">
+        <button type="button" x-on:click="doSearch">Pesquisar</button>
+        <p x-show="result.products?.length==0">
+            A pesquisa não encontrou nenhum produto
+        </p>
+        <div x-show="result.products?.length>0">
+            <h4>Titulo: <span x-text="result.products[0].title"></span></h4>
+            <p >Descrição:<span x-text="result.products[0].description"></span></p>
+            <p><b>Categoria:</b><span x-text="result.products[0].category"></span></p>
+            <p><b>Marca:</b><span x-text="result.products[0].brand"></span></p>
+            
+        </div>
+    </section>
+
+</body>
+</html>
