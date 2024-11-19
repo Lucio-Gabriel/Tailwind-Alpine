@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/output.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <title>Busca AI - API</title>
+</head>
+<body class="bg-slate-400">
+    
+    <section x-data="{
+        search:'',
+        result:{},
+        doSearch(){
+            fetch('https://dummyjson.com/products/search?q='+this.search)
+            .then(res => res.json())
+            .then(json=>this.result=json);
+        }
+    }"
+    >
+
+    <div class="flex flex-col items-center justify-center mt-64">
+        <h1 class="text-4xl font-semibold text-blue-800">Busca AI</h1>
+
+        <div class="pt-5 flex gap-2">
+            <input type="search" x-model="search" class="block w-full p-4  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Busque seu produto aqui" required />
+            <button type="button" x-on:click="doSearch"  class="text-white  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Buscar
+            </button>
+        </div>
+
+        <div class="pt-5">
+            <p class="text-red-600 font-semibold text-2xl" x-show="result.products?.length==0">
+                O seu produto esta sem estoque 
+            </p>
+        </div>
+
+        <div x-show="result.products?.length>0">
+            <ul>
+                <li class="text-2xl font-medium">Produto: <span class="font-normal" x-text="result.products[0].title"></span></li>
+                <li class="text-2xl font-medium">Categoria: <span class="font-normal" x-text="result.products[0].category"></span></li>
+                <li class="text-2xl font-medium">Marca: <span class="font-normal" x-text="result.products[0].brand"></span></li>
+                <li class="text-2xl font-medium">Preço: <span class="font-normal" x-text="result.products[0].price"></span></li>
+                 <li class="text-2xl font-medium">Quantidade Disponivel: <span class="font-normal" x-text="result.products[0].stock"></span></li>
+            </ul>
+        </div>
+
+    </div>
+    </section>
+
+</body>
+</html>
